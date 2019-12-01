@@ -2,22 +2,15 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 
-void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class CusAnimatedWidget extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        body: Builder(builder: (context){
-          return Spinner();
-        }),
-      ),
+    return Scaffold(
+      body: Builder(builder: (context){
+        return Spinner();
+      }),
     );
   }
 }

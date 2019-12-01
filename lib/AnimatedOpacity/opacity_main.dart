@@ -1,21 +1,14 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class OpacityWidget extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        body: Builder(builder: (context){
-          return LogoFade();
-        }),
-      ),
+    return Scaffold(
+      body: Builder(builder: (context){
+        return LogoFade();
+      }),
     );
   }
 }
@@ -38,6 +31,9 @@ class LogoFadeState extends State<LogoFade> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        Text("Container(color: Color.fromRGBO(255, 0, 0, 0.5)) is much faster than Opacity(opacity: 0.5, child: Container(color: Colors.red))."),
+        Text("Opacity就是控制显示隐藏的，完全可以用AnimatedOpacity替代"),
+
         AnimatedOpacity(
           opacity: opacityLevel,
           duration: Duration(seconds: 3),

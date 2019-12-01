@@ -1,10 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_best_performance/ShaderMask/shader_madk.dart';
+import 'package:flutter_best_performance/Text/text_shader.dart';
 
+import 'AnimatedBuilder/anim_main.dart';
+import 'AnimatedOpacity/opacity_main.dart';
 import 'LifeCycle/life_cycle_main.dart';
 import 'LifeCycle/life_dipose.dart';
 import 'LifeCycle/life_unikey.dart';
+import 'chip/chip_main.dart';
 
 GlobalKey formKey= new GlobalKey<PrintWidgetState>();
 String record="日志记录：\n";
@@ -102,6 +107,46 @@ class _MyHomePageState extends State<MyHomePage> {
                   }));
                 },
                 child: Text("State 生命周期三  dipose"),
+              ),
+              RaisedButton(
+                onPressed: (){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                    return ShaderMaskWidget();
+                  }));
+                },
+                child: Text("ShaderMask"),
+              ),
+              RaisedButton(
+                onPressed: (){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                    return TextShader();
+                  }));
+                },
+                child: Text("Text Shader"),
+              ),
+              RaisedButton(
+                onPressed: (){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                    return ChipWidget();
+                  }));
+                },
+                child: Text("Chip"),
+              ),
+              RaisedButton(
+                onPressed: (){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                    return CusAnimatedWidget();
+                  }));
+                },
+                child: Text("AnimatedBuilder"),
+              ),
+              RaisedButton(
+                  onPressed: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                      return OpacityWidget();
+                    }));
+                  },
+                  child: Text("opacity")
               ),
             ],
           )
