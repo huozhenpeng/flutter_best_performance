@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'LifeCycle/life_cycle_main.dart';
+import 'LifeCycle/life_dipose.dart';
+import 'LifeCycle/life_unikey.dart';
 
-GlobalKey _formKey= new GlobalKey<PrintWidgetState>();
+GlobalKey formKey= new GlobalKey<PrintWidgetState>();
 String record="日志记录：\n";
 void main() {
   FlutterError.onError = (FlutterErrorDetails details) {
@@ -31,10 +33,10 @@ void collectLog(String line){
   //会死循环，本来就是监听print的
   //print("unused error handler");
   record=record+line+"\n";
-  if(_formKey.currentState!=null)
-  {
-    _formKey.currentState.setState((){});
-  }
+//  if(formKey.currentState!=null)
+//  {
+//    formKey.currentState.setState((){});
+//  }
 }
 
 
@@ -70,18 +72,63 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
 
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            RaisedButton(
+      body: Container(
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              RaisedButton(
                 onPressed: (){
-
+                  record="日志记录：\n";
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                    return LifeCycleWidget1();
+                  }));
                 },
-              child: Text("State 生命周期一"),
-            ),
-          ],
+                child: Text("State 生命周期一"),
+              ),
+              RaisedButton(
+                onPressed: (){
+                  record="日志记录：\n";
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                    return LifeCycleWidget2();
+                  }));
+                },
+                child: Text("State 生命周期二  key不同"),
+              ),
+              RaisedButton(
+                onPressed: (){
+                  record="日志记录：\n";
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                    return LifeCycleWidget3();
+                  }));
+                },
+                child: Text("State 生命周期三  dipose"),
+              ),
+            ],
+          )
         ),
       ),
     );
   }
+}
+
+class PrintWidget extends StatefulWidget
+{
+  PrintWidget({Key key}):super(key:key);
+  @override
+  State<StatefulWidget> createState() {
+    return PrintWidgetState();
+  }
+
+}
+
+class PrintWidgetState extends State<PrintWidget>
+{
+  @override
+  Widget build(BuildContext context) {
+
+    return SingleChildScrollView(
+      child: Text(record),
+    );
+  }
+
 }

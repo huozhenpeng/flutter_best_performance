@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 
-class LifeCycleWidget1 extends StatelessWidget {
+class LifeCycleWidget2 extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class BodyPageState extends State<BodyPage>
     return Row(
       children: <Widget>[
         Expanded(
-          flex: 1,
+            flex: 1,
             child: Column(
               children: <Widget>[
                 _getWidget(index),
@@ -67,13 +67,13 @@ class BodyPageState extends State<BodyPage>
   {
     if(index==1)
     {
-//      return SecondPage(Colors.blue,key: UniqueKey(),);
-      return  SecondPage(Colors.blue);
+      return SecondPage(Colors.blue,key: UniqueKey(),);
+//      return  SecondPage(Colors.blue);
     }
     else
     {
-//      return SecondPage(Colors.deepPurple,key: UniqueKey(),);
-      return SecondPage(Colors.deepPurple);
+      return SecondPage(Colors.deepPurple,key: UniqueKey(),);
+//      return SecondPage(Colors.deepPurple);
     }
 
   }

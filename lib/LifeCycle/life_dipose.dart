@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+import '../main.dart';
 
-class MyApp extends StatelessWidget {
+class LifeCycleWidget3 extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("验证State生命周期"),
       ),
-      home: Scaffold(
-        body: Builder(builder: (context){
-          return Container(
-            margin: EdgeInsets.only(top: 100),
-            child: BodyPage(),
-          );
-        }),
-      ),
+      body: Builder(builder: (context){
+        return Container(
+          child: BodyPage(),
+        );
+      }),
     );
   }
 }
@@ -30,21 +26,37 @@ class BodyPage extends StatefulWidget
     return BodyPageState();
   }
 }
-
 class BodyPageState extends State<BodyPage>
 {
 
   int index=1;
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
       children: <Widget>[
-        _getWidget(index),
-        RaisedButton(onPressed: (){
-          setState(() {
-            index=2;
-          });
-        })
+        Expanded(
+            flex: 1,
+            child: Column(
+              children: <Widget>[
+                _getWidget(index),
+                RaisedButton(onPressed: (){
+                  setState(() {
+                    index=2;
+                  });
+                },
+                  child: Text("切换Widget"),
+                ),
+
+                RaisedButton(onPressed: (){
+                  setState(() {
+                    record="日志记录:\n";
+                  });
+                },
+                  child: Text("清空日志"),
+                )
+              ],
+            )),
+        Expanded(child:PrintWidget(key: formKey,) ),
       ],
     );
   }
